@@ -1,0 +1,11 @@
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_executable(stackheap stackheap.cpp)
+add_executable(arraybyref arraybyref.cpp)
+add_executable(passby passby.cpp)
+add_executable(pointers pointers.cpp)
+add_executable(references references.cpp)
+add_executable(returnref returnref.cpp)
+add_executable(rvalueref rvalueref.cpp)
+add_executable(swapbyref swapbyref.cpp)
