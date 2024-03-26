@@ -17,4 +17,5 @@
 - Saper utilizzare un framework a eventi per sviluppare applicazioni C++ multipiattaforma con interfaccia grafica
 
 Wiki: [https://github.com/slashdotted/corsocpp_tp_2024/wiki](https://github.com/slashdotted/corsocpp_tp_2024/wiki)
+
 Homepage del corso [https://www.icorsi.ch/course/view.php?id=17334](https://www.icorsi.ch/course/view.php?id=17334)
