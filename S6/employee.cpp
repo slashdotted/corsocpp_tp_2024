@@ -32,3 +32,13 @@ string Employee::classname() const
 {
     return "Employee";
 }
+
+void Employee::earnSalary(int amount) const
+{
+    cout << "Employee::earnSalary(int amount)\n";
+}
+
+void Employee::earnSalary(double amount) const
+{
+    cout << "Employee::earnSalary(double amount)\n";
+}

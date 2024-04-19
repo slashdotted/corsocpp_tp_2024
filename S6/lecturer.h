@@ -10,7 +10,9 @@ public:
     ~Lecturer();
     std::string studies() const;
     std::string course() const;
-    std::string classname() const;
+    std::string classname() const override;
+    void doSomeWork() override;
+    void earnSalary(int amount) const;
 
 protected:
     std::string m_studies;

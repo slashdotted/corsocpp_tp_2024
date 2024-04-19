@@ -7,7 +7,7 @@ using std::string;
 
 Lecturer::Lecturer(string name, string institute, int nr,
                    string studies, string course)
-    : m_studies{studies}
+    : Employee{name, institute, nr}, m_studies{studies}
     , m_course{course}
 {
     cout << "Costructing Lecturer" << endl;
@@ -26,5 +26,15 @@ string Lecturer::course() const
 }
 string Lecturer::classname() const
 {
-    return "Lecturer";
+    return Employee::classname()+":Lecturer";
+}
+
+void Lecturer::doSomeWork()
+{
+    cout << "Lecturer is teaching " << m_course << '\n';
+}
+
+void Lecturer::earnSalary(int amount) const
+{
+    cout << "Lecturer::earnSalary(int amount)\n";
 }
