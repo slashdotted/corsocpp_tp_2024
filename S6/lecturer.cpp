@@ -34,7 +34,17 @@ void Lecturer::doSomeWork()
     cout << "Lecturer is teaching " << m_course << '\n';
 }
 
-void Lecturer::earnSalary(int amount) const
+void Lecturer::earnSalary(float amount) const
 {
-    cout << "Lecturer::earnSalary(int amount)\n";
+    cout << "Lecturer::earnSalary(float amount)\n";
 }
+
+/*void Lecturer::earnSalary(int amount) const
+{
+    Employee::earnSalary(amount);
+}
+
+void Lecturer::earnSalary(double amount) const
+{
+    Employee::earnSalary(amount);
+}*/

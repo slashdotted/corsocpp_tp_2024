@@ -1,4 +1,5 @@
-#pragma once
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
 #include <string>
 
 class Employee
@@ -21,3 +22,4 @@ protected:
     std::string m_institute;
     int m_employeenr;
 };
+#endif

@@ -5,6 +5,7 @@
 class Lecturer : public Employee
 {
 public:
+    using Employee::earnSalary;
     Lecturer(
         std::string name, std::string institute, int nr, std::string studies, std::string course);
     ~Lecturer();
@@ -12,7 +13,9 @@ public:
     std::string course() const;
     std::string classname() const override;
     void doSomeWork() override;
-    void earnSalary(int amount) const;
+    void earnSalary(float amount) const;
+    //void earnSalary(int amount) const;
+    //void earnSalary(double amount) const;
 
 protected:
     std::string m_studies;

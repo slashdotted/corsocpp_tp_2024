@@ -11,13 +11,17 @@ void printInfo(Employee* e) {
 }
 
 void printInfo(const Employee& e) {
-    cout << e.classname() << ": " << e.name() << ", " << e.institute() << ", " << e.employeenr() << '\n';
+    cout << e.classname() << ": " << e.name() << ", "
+         << e.institute() << ", " << e.employeenr() << '\n';
 }
 
 int main() {
     //Employee a{"John", "ISIN", 123};
     Lecturer l{"Mark", "ISEA", 555, "Computer Science", "C++"};
-    Researcher r{"Alice", "ISEA", 5595, "AI"};
+    //Researcher r{"Alice", "ISEA", 5595, "AI"};
+
+    //l.Employee::earnSalary(2000.5);
+    l.earnSalary(2000.5);
 
     /*cout << a.classname() << ": " << a.name() << ", " << a.institute() << ", " << a.employeenr() << '\n';
     cout << l.classname() << ": " << l.name() << ", " << l.institute()
@@ -27,9 +31,10 @@ int main() {
          << r.institute() << ", " << r.employeenr() << ", "
          << r.researcharea() << '\n';*/
 
-    printInfo(l);
+    /*printInfo(l);
     printInfo(&l);
 
     printInfo(r);
-    printInfo(&r);
+    printInfo(&r);*/
+
 }
