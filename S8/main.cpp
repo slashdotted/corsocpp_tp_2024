@@ -1,40 +1,77 @@
-#include "employee.h"
-#include "lecturer.h"
-#include "researcher.h"
 #include <iostream>
+#include <vector>
+#include "lecturerresearcher.h"
 
-using std::cout;
+void staticcast() {
+    Employee e{"John", "ISIN", 123};
+    Lecturer l{"Mark", "ISEA", 555, "Computer Science", "C++"};
+    Researcher r{"Alice", "ISEA", 5595, "AI"};
+    LecturerResearcher lr{"John", "ISIN", 3565, "CompSci", "ParallelProgramming", "DS", 50.0};
 
-void printInfo(Employee* e) {
-    cout << e->classname() << ": " << e->name() << ", " << e->institute() << ", " << e->employeenr() << '\n';
-    e->doSomeWork();
+    auto el{static_cast<Employee>(l)};
+    Employee el2{l};
+
+    Employee& er{static_cast<Employee&>(r)};
+    Employee& er2{r};
+
+    Employee* ep{static_cast<Employee*>(&r)};
+    Employee* ep2{&r};
+
+    //Researcher* rp{static_cast<Researcher*>(ep)}; // virtual base class
+    Researcher* lrp{&lr};
+    //Lecturer* lrp_wrong{static_cast<Lecturer*>(lrp)};
+    LecturerResearcher* lr2{static_cast<LecturerResearcher*>(lrp)};
+
+    Researcher& lrr{lr};
+    LecturerResearcher& lrr2{static_cast<LecturerResearcher&>(lrr)};
+
+    // Wrong cast
+    Researcher& rr{r};
+    LecturerResearcher& lrr3{static_cast<LecturerResearcher&>(rr)};
+
+
+
 }
 
-void printInfo(const Employee& e) {
-    cout << e.classname() << ": " << e.name() << ", "
-         << e.institute() << ", " << e.employeenr() << '\n';
-}
+
 
 int main() {
-    //Employee a{"John", "ISIN", 123};
+    using namespace std;
+    LecturerResearcher lr{"John", "ISIN", 3565, "CompSci", "ParallelProgramming", "DS", 50.0};
+    cout << "Name: "
+         << lr.name()
+         << " Employee nr: "
+         << lr.employeenr() << '\n';
+    cout << "Studies: " << lr.studies() << '\n';
+    cout << "Research area:" << lr.researcharea() << '\n';
+
+    // Upcasting
+    Employee e{"John", "ISIN", 123};
     Lecturer l{"Mark", "ISEA", 555, "Computer Science", "C++"};
-    //Researcher r{"Alice", "ISEA", 5595, "AI"};
+    Researcher r{"Alice", "ISEA", 5595, "AI"};
 
-    //l.Employee::earnSalary(2000.5);
-    l.earnSalary(2000.5);
+    // Upcasting "always" works
+    Employee* le{&l};
+    Employee* re{&r};
+    Employee* lre{&lr};
 
-    /*cout << a.classname() << ": " << a.name() << ", " << a.institute() << ", " << a.employeenr() << '\n';
-    cout << l.classname() << ": " << l.name() << ", " << l.institute()
-         << ", " << l.employeenr() << ", " << l.studies()
-         << ", " << l.course() << '\n';
-    cout << r.classname() << ": " << r.name() << ", "
-         << r.institute() << ", " << r.employeenr() << ", "
-         << r.researcharea() << '\n';*/
+    Employee& rle{l};
+    Employee& rre{r};
+    Employee& rlre{lr};
 
-    /*printInfo(l);
-    printInfo(&l);
+    Employee vle{l};
+    Employee vre{r};
+    Employee vlre{lr};
 
-    printInfo(r);
-    printInfo(&r);*/
+    std::cout << "&l=" << &l << " le=" << le << std::endl;
 
+    std::vector<Employee*> v;
+    v.push_back(&l);
+    for(Employee* p : v) {
+        if ((void*) p == (void*) &l) {
+            std::cout << "Found!\n";
+        }
+    }
+
+    staticcast();
 }

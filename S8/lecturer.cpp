@@ -29,11 +29,6 @@ string Lecturer::classname() const
     return Employee::classname()+":Lecturer";
 }
 
-void Lecturer::doSomeWork()
-{
-    cout << "Lecturer is teaching " << m_course << '\n';
-}
-
 void Lecturer::earnSalary(float amount) const
 {
     cout << "Lecturer::earnSalary(float amount)\n";

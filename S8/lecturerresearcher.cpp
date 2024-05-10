@@ -5,11 +5,16 @@ using std::cout;
 using std::endl;
 using std::string;
 
-LecturerResearcher::LecturerResearcher(
-    std::string name, std::string institute, int nr,
-    std::string studies, std::string course,
-    std::string researcharea, double research_perc)
-    : m_researchperc{research_perc}
+LecturerResearcher::LecturerResearcher(std::string name,
+                                       std::string institute,
+                                       int nr,
+                                       std::string studies,
+                                       std::string course,
+                                       std::string researcharea,
+                                       double research_perc)
+    : Employee{name,institute,nr}, Lecturer{name, institute, nr, studies, course}
+    , Researcher{name, institute, nr, researcharea}
+    , m_researchperc{research_perc}
 {
     cout << "Costructing LecturerResearcher" << endl;
 }

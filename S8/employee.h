@@ -7,12 +7,13 @@ class Employee
 public:
     Employee(std::string name, std::string institute, int nr);
     ~Employee();
+    //Employee() = default;
 
     std::string name() const;
     std::string institute() const;
     int employeenr() const;
     virtual std::string classname() const;
-    virtual void doSomeWork() = 0; // Pure virtual method (there is no implementation in this class)
+    //virtual void doSomeWork() = 0; // Pure virtual method (there is no implementation in this class)
                                    // if there is at least one pure virtual method -> class is abstract
     void earnSalary(int amount) const;
     void earnSalary(double amount) const;

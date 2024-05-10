@@ -2,7 +2,7 @@
 #include <string>
 #include "employee.h"
 
-class Lecturer : public Employee
+class Lecturer : public virtual Employee
 {
 public:
     using Employee::earnSalary;
@@ -12,7 +12,6 @@ public:
     std::string studies() const;
     std::string course() const;
     std::string classname() const override;
-    void doSomeWork() override;
     void earnSalary(float amount) const;
     //void earnSalary(int amount) const;
     //void earnSalary(double amount) const;

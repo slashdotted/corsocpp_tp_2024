@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
+#include "lecturer.h"
+#include "researcher.h"
 
-class LecturerResearcher
+class LecturerResearcher : public Lecturer, public Researcher
 {
 public:
     LecturerResearcher(

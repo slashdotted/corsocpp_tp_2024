@@ -22,8 +22,3 @@ string Researcher::classname() const
 {
     return Employee::classname()+":Researcher";
 }
-
-void Researcher::doSomeWork()
-{
-    cout << "Researchers is researching: " << m_researcharea << '\n';
-}
