@@ -4,7 +4,7 @@
 
 struct Foo {
     // Soluzione per rendere Foo un tipo polimorfico
-    //virtual ~Foo() = default;
+    virtual ~Foo() = default;
 };
 
 struct Bar : Foo {
@@ -26,6 +26,7 @@ void dynamiccast() {
     Employee* ep{dynamic_cast<Employee*>(&r)};
     Employee* ep2{&r};
 
+    // dynamic_cast può fare downcasting attraversando una derivazione virtual
     Researcher* rp{dynamic_cast<Researcher*>(ep)}; // virtual base class
     Researcher* lrp{&lr};
 
@@ -83,11 +84,14 @@ void staticcast() {
     Employee* ep{static_cast<Employee*>(&r)};
     Employee* ep2{&r};
 
+    // Non posso fare downcasting con static_cast attraversando una derivazione virtual
     //Researcher* rp{static_cast<Researcher*>(ep)}; // virtual base class
-    Researcher* lrp{&lr};
-    //Lecturer* lrp_ok{static_cast<Lecturer*>(lrp)};
-    LecturerResearcher* lr2{static_cast<LecturerResearcher*>(lrp)};
 
+    Researcher* lrp{&lr};
+    // Non posso "saltare" tra due rami della gerarchia
+    //Lecturer* lrp_ok{static_cast<Lecturer*>(lrp)};
+
+    LecturerResearcher* lr2{static_cast<LecturerResearcher*>(lrp)};
     Researcher& lrr{lr};
     LecturerResearcher& lrr2{static_cast<LecturerResearcher&>(lrr)};
 
@@ -99,8 +103,13 @@ void staticcast() {
     LecturerResearcher* lrrp3{static_cast<LecturerResearcher*>(rrp)};
 
     //LecturerResearcher lrrp4{static_cast<LecturerResearcher>(r)};
+
     void* vp{&r};
     LecturerResearcher* lrrp4{static_cast<LecturerResearcher*>(vp)};
+
+    Bar b;
+    Foo* f{&b};
+    auto d{static_cast<Bar*>(f)};
 }
 
 
