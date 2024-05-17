@@ -2,7 +2,7 @@
 #include <iostream>
 
 int main() {
-    MyList l{10};
+    MyList<int> l{10};
     for(unsigned int i{0}; i<10; ++i) {
         l[i] = i;
     }
