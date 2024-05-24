@@ -100,3 +100,5 @@ std::ostream &operator<<(std::ostream &o, const Inspector &i) {
   }
   return o;
 }
+
+#define follower friend

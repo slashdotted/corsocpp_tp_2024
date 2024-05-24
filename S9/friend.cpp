@@ -16,6 +16,9 @@ public:
     Machine(int serialnr);
 
 private:
+    friend void Inspector::inspect(const Machine&);
+    friend class Inspector;
+    friend void log(const Machine&);
     void self_test() const;
 protected:
     int m_serialnr;
@@ -28,18 +31,18 @@ void Machine::self_test() const {
 }
 
 void Inspector::inspect(const Machine& m) {
-    /*std::cout << "Inspect Serial nr:" << m.m_serialnr << '\n';
-    m.self_test();*/
+    std::cout << "Inspect Serial nr:" << m.m_serialnr << '\n';
+    m.self_test();
 }
 
 void Inspector::spy(const Machine& m) {
-    /*std::cout << "Spy Serial nr:" << m.m_serialnr << '\n';
-    m.self_test();*/
+    std::cout << "Spy Serial nr:" << m.m_serialnr << '\n';
+    m.self_test();
 }
 
 void log(const Machine& m) {
-    /*std::cout << "Log Serial nr:" << m.m_serialnr << '\n';
-    m.self_test();*/
+    std::cout << "Log Serial nr:" << m.m_serialnr << '\n';
+    m.self_test();
 }
 
 int main() {
@@ -47,6 +50,6 @@ int main() {
     Inspector i;
     std::cout << m << std::endl;
     std::cout << i << std::endl;
-    /*i.inspect(m);
-    log(m);*/
+    i.inspect(m);
+    log(m);
 }
